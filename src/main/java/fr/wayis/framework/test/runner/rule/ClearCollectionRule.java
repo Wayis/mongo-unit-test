@@ -30,8 +30,9 @@ public final class ClearCollectionRule implements TestRule {
             public void evaluate() throws Throwable {
                 ClearCollection annotation = description.getAnnotation(ClearCollection.class);
                 if (annotation != null) {
-                    LOGGER.info("@ClearCollection found -> collection '" + annotation.value() + "' will be cleared");
-                    MongoManager.getInstance().clearCollection(annotation.value());
+                    final String collectionName = annotation.name();
+                    LOGGER.info("@ClearCollection found -> collection '" + collectionName + "' will be cleared");
+                    MongoManager.getInstance().clearCollection(collectionName);
                 }
                 base.evaluate();
             }

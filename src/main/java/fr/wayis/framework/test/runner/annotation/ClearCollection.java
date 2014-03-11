@@ -15,5 +15,5 @@ public @interface ClearCollection {
     /**
      * The name of the collection to clear.
      */
-    String value();
+    String name();
 }
