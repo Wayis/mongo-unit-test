@@ -46,11 +46,11 @@ public final class InitCollectionRule implements TestRule {
                         file = description.getTestClass().getResourceAsStream(fileName);
                         if (file == null) {
                             throw new FileNotFoundException("Unable to load file '" + fileName + "' from the classpath");
-                        } else {
-                            String jsonFile = IOUtils.toString(file, "UTF-8");
-                            BasicDBList data = (BasicDBList) JSON.parse(jsonFile);
-                            MongoManager.getInstance().initCollection(collectionName, data);
                         }
+
+                        String jsonFile = IOUtils.toString(file, "UTF-8");
+                        BasicDBList data = (BasicDBList) JSON.parse(jsonFile);
+                        MongoManager.getInstance().initCollection(collectionName, data);
                     } finally {
                         StreamUtils.closeQuietly(file);
                     }
