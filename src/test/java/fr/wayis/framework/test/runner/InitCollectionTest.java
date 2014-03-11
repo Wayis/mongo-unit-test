@@ -57,7 +57,10 @@ public class InitCollectionTest {
                 .addInitParam("REST Application", "javax.ws.rs.Application", ApplicationConfig.class.getName());
     }
 
-
+    /**
+     * Tests the {@link fr.wayis.framework.test.runner.annotation.InitCollection} annotation.<br/>
+     * This method tests if the annotation is called before the test and if the collection is correctly initialized.
+     */
     @Test
     @InitCollection(name = COLLECTION_NAME, file = "/users_init.json")
     public void testInitCollectionAnnotation() {
