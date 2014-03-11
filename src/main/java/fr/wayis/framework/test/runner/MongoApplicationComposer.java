@@ -2,6 +2,7 @@ package fr.wayis.framework.test.runner;
 
 import fr.wayis.framework.test.runner.manager.MongoManager;
 import fr.wayis.framework.test.runner.rule.ClearCollectionRule;
+import fr.wayis.framework.test.runner.rule.InitCollectionRule;
 import org.apache.openejb.junit.ApplicationComposer;
 import org.junit.internal.runners.model.EachTestNotifier;
 import org.junit.rules.TestRule;
@@ -14,19 +15,22 @@ import java.util.List;
 /**
  * JUnit Runner to manage custom rules :
  * <ul>
- * <li>ClearCollectionRule : to clear a given datasource. Used with the
- * {@link fr.wayis.framework.test.runner.annotation.ClearCollection} annotation.</li>
+ * <li>ClearCollectionRule: to clear a given collection. Used with the {@link fr.wayis.framework.test.runner.annotation.ClearCollection} annotation.</li>
+ * <li>InitCollectionRule: to initialize a given collection with a JSON file. Used with the {@link fr.wayis.framework.test.runner.annotation.InitCollection} annotation.</li>
  * </ul>
  * <p/>
  * This Runner extends the openejb {@link org.apache.openejb.junit.ApplicationComposer} Runner.
  *
  * @see fr.wayis.framework.test.runner.rule.ClearCollectionRule
  * @see fr.wayis.framework.test.runner.annotation.ClearCollection
+ * @see fr.wayis.framework.test.runner.rule.InitCollectionRule
+ * @see fr.wayis.framework.test.runner.annotation.InitCollection
  * @see org.apache.openejb.junit.ApplicationComposer
  */
 public class MongoApplicationComposer extends ApplicationComposer {
 
     private TestRule clearCollectionRule;
+    private TestRule initCollectionRule;
 
     /**
      * Constructs the Runner and initializes all rules.<br/>
@@ -38,6 +42,7 @@ public class MongoApplicationComposer extends ApplicationComposer {
     public MongoApplicationComposer(Class<?> klass) throws InitializationError {
         super(klass);
         this.clearCollectionRule = new ClearCollectionRule();
+        this.initCollectionRule = new InitCollectionRule();
     }
 
     /**
@@ -64,12 +69,15 @@ public class MongoApplicationComposer extends ApplicationComposer {
      * @param target the test case instance
      * @return a list of TestRules that should be applied when executing this
      * test
+     *
      * @see fr.wayis.framework.test.runner.rule.ClearCollectionRule
+     * @see fr.wayis.framework.test.runner.rule.InitCollectionRule
      */
     @Override
     protected List<TestRule> getTestRules(Object target) {
         List<TestRule> rules = super.getTestRules(target);
         rules.add(clearCollectionRule);
+        rules.add(initCollectionRule);
         return rules;
     }
 }

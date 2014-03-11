@@ -1,8 +1,6 @@
 package fr.wayis.framework.test.runner.manager;
 
-import com.mongodb.DB;
-import com.mongodb.DBCollection;
-import com.mongodb.MongoClient;
+import com.mongodb.*;
 import de.flapdoodle.embed.mongo.MongodExecutable;
 import de.flapdoodle.embed.mongo.MongodProcess;
 import de.flapdoodle.embed.mongo.MongodStarter;
@@ -98,6 +96,19 @@ public final class MongoManager {
     public void clearCollection(final String collectionName) {
         final DBCollection collection = getCollection(collectionName);
         collection.drop();
+    }
+
+    /**
+     * Initializes the given collection with an JSON array.
+     *
+     * @param collectionName The name of the collection to initialize.
+     * @param data           Data to insert.
+     */
+    public void initCollection(final String collectionName, final BasicDBList data) {
+        final DBCollection collection = getCollection(collectionName);
+        for (int i = 0; i < data.size(); i++) {
+            collection.insert((DBObject) data.get(i));
+        }
     }
 
     /**
