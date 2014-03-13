@@ -2,11 +2,9 @@ package fr.wayis.framework.test.runner;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
-import com.mongodb.DBObject;
 import fr.wayis.framework.jee6.property.ConfigPropertyProducer;
 import fr.wayis.framework.mongo.DBConnection;
 import fr.wayis.framework.test.runner.annotation.ClearCollection;
-import fr.wayis.framework.test.runner.annotation.InitCollection;
 import fr.wayis.framework.test.runner.application.ApplicationConfig;
 import fr.wayis.framework.test.runner.manager.MongoManager;
 import fr.wayis.framework.test.runner.resource.UserResource;
@@ -18,12 +16,11 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import javax.inject.Inject;
 import javax.ws.rs.core.Application;
-import java.util.List;
 
 /**
  * Test of the {@link fr.wayis.framework.test.runner.annotation.ClearCollection} annotation to use in a test method with the {@link fr.wayis.framework.test.runner.MongoApplicationComposer} runner.<br/>
+ *
  * @see fr.wayis.framework.test.runner.annotation.ClearCollection
  * @see fr.wayis.framework.test.runner.rule.ClearCollectionRule
  * @see fr.wayis.framework.test.runner.manager.MongoManager
