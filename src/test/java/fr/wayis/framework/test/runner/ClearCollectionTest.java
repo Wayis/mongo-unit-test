@@ -23,11 +23,11 @@ import javax.ws.rs.core.Application;
 import java.util.List;
 
 /**
- * Test of the {@link fr.wayis.framework.test.runner.MongoApplicationComposer} JUnit Runner.<br/>
- * This test class tests:
- * <ul>
- * <li>{@link fr.wayis.framework.test.runner.annotation.ClearCollection}: to test {@link fr.wayis.framework.test.runner.rule.ClearCollectionRule}</li>
- * </ul>
+ * Test of the {@link fr.wayis.framework.test.runner.annotation.ClearCollection} annotation to use in a test method with the {@link fr.wayis.framework.test.runner.MongoApplicationComposer} runner.<br/>
+ * @see fr.wayis.framework.test.runner.annotation.ClearCollection
+ * @see fr.wayis.framework.test.runner.rule.ClearCollectionRule
+ * @see fr.wayis.framework.test.runner.manager.MongoManager
+ * @see fr.wayis.framework.test.runner.MongoApplicationComposer
  */
 @EnableServices("jaxrs")
 @RunWith(MongoApplicationComposer.class)

@@ -23,6 +23,10 @@ import javax.ws.rs.core.Application;
 
 /**
  * Test of the {@link ExpectedCollection} annotation to use in a test method with the {@link fr.wayis.framework.test.runner.MongoApplicationComposer} runner.<br/>
+ * @see fr.wayis.framework.test.runner.annotation.ExpectedCollection
+ * @see fr.wayis.framework.test.runner.rule.CheckCollectionRule
+ * @see fr.wayis.framework.test.runner.manager.MongoManager
+ * @see fr.wayis.framework.test.runner.MongoApplicationComposer
  */
 @EnableServices("jaxrs")
 @RunWith(MongoApplicationComposer.class)

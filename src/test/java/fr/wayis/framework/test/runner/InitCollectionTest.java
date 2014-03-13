@@ -1,6 +1,5 @@
 package fr.wayis.framework.test.runner;
 
-import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
 import fr.wayis.framework.jee6.property.ConfigPropertyProducer;
 import fr.wayis.framework.mongo.DBConnection;
@@ -19,11 +18,12 @@ import org.junit.runner.RunWith;
 import javax.ws.rs.core.Application;
 
 /**
- * Test of the {@link MongoApplicationComposer} JUnit Runner.<br/>
- * This test class tests:
- * <ul>
- * <li>{@link fr.wayis.framework.test.runner.annotation.ClearCollection}: to test {@link fr.wayis.framework.test.runner.rule.ClearCollectionRule}</li>
- * </ul>
+ * Test of the {@link fr.wayis.framework.test.runner.annotation.InitCollection} annotation to use in a test method with the {@link fr.wayis.framework.test.runner.MongoApplicationComposer} runner.<br/>
+ *
+ * @see fr.wayis.framework.test.runner.annotation.InitCollection
+ * @see fr.wayis.framework.test.runner.rule.InitCollectionRule
+ * @see fr.wayis.framework.test.runner.manager.MongoManager
+ * @see fr.wayis.framework.test.runner.MongoApplicationComposer
  */
 @EnableServices("jaxrs")
 @RunWith(MongoApplicationComposer.class)
