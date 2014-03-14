@@ -48,7 +48,7 @@ public void testInitCollectionAnnotation() {
 }
 ```
 
-**_@ExpectedCollection()_**<br/>
+**_@ExpectedCollection(String name, String file, String[] ignoredProperties)_**<br/>
 Annotation used by the runner to verify the given collection.<br/>
 The file must be on JSON format.<br/>
 Documents order in the JSON array is not a constraint.<br/>
