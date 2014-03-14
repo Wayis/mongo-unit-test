@@ -6,6 +6,7 @@ import fr.wayis.framework.test.runner.rule.ClearCollectionRule;
 import fr.wayis.framework.test.runner.rule.InitCollectionRule;
 import org.apache.openejb.junit.ApplicationComposer;
 import org.junit.internal.runners.model.EachTestNotifier;
+import org.junit.rules.RuleChain;
 import org.junit.rules.TestRule;
 import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.model.InitializationError;
@@ -75,6 +76,7 @@ public class MongoApplicationComposer extends ApplicationComposer {
 
     /**
      * Adds custom rules to the ApplicationComposer rules.
+     * Custom rules are added into a RuleChain to be executed always in the correct order.
      *
      * @param target the test case instance
      * @return a list of TestRules that should be applied when executing this
@@ -82,13 +84,12 @@ public class MongoApplicationComposer extends ApplicationComposer {
      * @see fr.wayis.framework.test.runner.rule.ClearCollectionRule
      * @see fr.wayis.framework.test.runner.rule.InitCollectionRule
      * @see fr.wayis.framework.test.runner.rule.CheckCollectionRule
+     * @see org.junit.rules.RuleChain
      */
     @Override
     protected List<TestRule> getTestRules(Object target) {
         final List<TestRule> rules = new ArrayList<>();
-        rules.add(clearCollectionRule);
-        rules.add(initCollectionRule);
-        rules.add(checkCollectionRule);
+        rules.add(RuleChain.outerRule(checkCollectionRule).around(clearCollectionRule).around(initCollectionRule));
         rules.addAll(super.getTestRules(target));
         return rules;
     }
