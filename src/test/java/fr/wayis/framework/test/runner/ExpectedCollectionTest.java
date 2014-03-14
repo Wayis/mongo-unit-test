@@ -67,7 +67,7 @@ public class ExpectedCollectionTest {
      * This method tests if the annotation is called after the test and if the collection corresponds to the file.
      */
     @Test
-    @ExpectedCollection(name = COLLECTION_NAME, file = "/users_check.json")
+    @ExpectedCollection(name = COLLECTION_NAME, file = "/data/users_check.json")
     public void testExpectedCollectionAnnotation() {
         clearUserCollection();
         addUser(new BasicDBObject("lastname", "WHITE").append("firstname", "Walt"));
@@ -80,7 +80,7 @@ public class ExpectedCollectionTest {
      * This method tests if the fail message is correct if the size of the expected collection is not the size as the mongodb collection.
      */
     @Test
-    @ExpectedCollection(name = COLLECTION_NAME, file = "/users_check.json")
+    @ExpectedCollection(name = COLLECTION_NAME, file = "/data/users_check.json")
     public void testExpectedCollectionAnnotationFailedBadSize() {
         expectedException.expect(AssertionError.class);
         expectedException.expectMessage("The expected collection does not have the same number of documents as mongodb collection. expected:<3> but was:<4>");
@@ -97,7 +97,7 @@ public class ExpectedCollectionTest {
      * This method tests if the fail message is correct if there is a bad document.
      */
     @Test
-    @ExpectedCollection(name = COLLECTION_NAME, file = "/users_check.json")
+    @ExpectedCollection(name = COLLECTION_NAME, file = "/data/users_check.json")
     public void testExpectedCollectionAnnotationFailedBadDocument() {
         expectedException.expect(AssertionError.class);
         final DBObject expectedBadDocument = new BasicDBObject("lastname", "WHITE").append("firstname", "Skyler");
@@ -114,7 +114,7 @@ public class ExpectedCollectionTest {
      * This method tests if the annotation is called after the test and if ignored columns are taken into account.
      */
     @Test
-    @ExpectedCollection(name = COLLECTION_NAME, file = "/users_check_with_ignored_properties.json", ignoredProperties = {"_id", "lastname"})
+    @ExpectedCollection(name = COLLECTION_NAME, file = "/data/users_check_with_ignored_properties.json", ignoredProperties = {"_id", "lastname"})
     public void testIgnoredColumns() {
         clearUserCollection();
         addUser(new BasicDBObject("lastname", "WHITE").append("firstname", "Walt"));
@@ -127,7 +127,7 @@ public class ExpectedCollectionTest {
      * This method tests if the order of document keys is not a constraint.
      */
     @Test
-    @ExpectedCollection(name = COLLECTION_NAME, file = "/users_check_different_order.json")
+    @ExpectedCollection(name = COLLECTION_NAME, file = "/data/users_check_different_order.json")
     public void testExpectedCollectionAnnotationDifferentOrder() {
         clearUserCollection();
         addUser(new BasicDBObject("lastname", "WHITE").append("firstname", "Walt"));

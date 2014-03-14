@@ -62,7 +62,7 @@ public class InitCollectionTest {
      * This method tests if the annotation is called before the test and if the collection is correctly initialized.
      */
     @Test
-    @InitCollection(name = COLLECTION_NAME, file = "/users_init.json")
+    @InitCollection(name = COLLECTION_NAME, file = "/data/users_init.json")
     public void testInitCollectionAnnotation() {
         final DBCollection users = MongoManager.getInstance().getCollection(COLLECTION_NAME);
         Assert.assertEquals("The @InitCollection does not initialize the collection.", 5, users.count());

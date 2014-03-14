@@ -76,7 +76,7 @@ public class MongoApplicationComposerTest {
      */
     @Test
     @ClearCollection(name = COLLECTION_NAME)
-    @InitCollection(name = COLLECTION_NAME, file = "/users_init.json")
+    @InitCollection(name = COLLECTION_NAME, file = "/data/users_init.json")
     public void testClearInitCollectionAnnotation() {
         List<DBObject> users = userResource.findAll();
         Assert.assertEquals("The collection was not correctly initialized.", 5, users.size());
@@ -87,7 +87,7 @@ public class MongoApplicationComposerTest {
      * This method tests if ClearCollection annotation is called before the InitCollection one even if the annotation order is changed on the test method.
      */
     @Test
-    @InitCollection(name = COLLECTION_NAME, file = "/users_init.json")
+    @InitCollection(name = COLLECTION_NAME, file = "/data/users_init.json")
     @ClearCollection(name = COLLECTION_NAME)
     public void testClearInitCollectionAnnotationDifferentOrder() {
         List<DBObject> users = userResource.findAll();
@@ -100,8 +100,8 @@ public class MongoApplicationComposerTest {
      */
     @Test
     @ClearCollection(name = COLLECTION_NAME)
-    @InitCollection(name = COLLECTION_NAME, file = "/users_init.json")
-    @ExpectedCollection(name = COLLECTION_NAME, file = "/users_check_insert.json")
+    @InitCollection(name = COLLECTION_NAME, file = "/data/users_init.json")
+    @ExpectedCollection(name = COLLECTION_NAME, file = "/data/users_check_insert.json")
     public void testCombinedAllAnnotations() {
         List<DBObject> users = userResource.findAll();
         Assert.assertEquals("The collection was not correctly initialized.", 5, users.size());
@@ -116,8 +116,8 @@ public class MongoApplicationComposerTest {
      * This method tests if ClearCollection annotation is called before the InitCollection one and if the ExpectedCollection is called after all even if the order is changed.
      */
     @Test
-    @ExpectedCollection(name = COLLECTION_NAME, file = "/users_check_insert.json")
-    @InitCollection(name = COLLECTION_NAME, file = "/users_init.json")
+    @ExpectedCollection(name = COLLECTION_NAME, file = "/data/users_check_insert.json")
+    @InitCollection(name = COLLECTION_NAME, file = "/data/users_init.json")
     @ClearCollection(name = COLLECTION_NAME)
     public void testCombinedAllAnnotationsDifferentOrder() {
         List<DBObject> users = userResource.findAll();
