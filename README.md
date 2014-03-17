@@ -4,7 +4,7 @@ It provides a runner extending the OpenEJB ApplicationComposer allowing the use 
 ```
 <dependency>
     <groupId>fr.wayis.framework</groupId>
-    <artifactId>mongo-unit-test</artifactId>
+    <artifactId>mongodb-unit-test</artifactId>
     <version>1.0.0</version>
     <scope>test</scope>
 </dependency>
