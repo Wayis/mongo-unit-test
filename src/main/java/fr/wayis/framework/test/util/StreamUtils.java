@@ -1,4 +1,4 @@
-package fr.wayis.framework.test.runner.util;
+package fr.wayis.framework.test.util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

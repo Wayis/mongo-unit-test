@@ -1,16 +1,16 @@
-package fr.wayis.framework.test.runner;
+package fr.wayis.framework.test.mongodb.runner;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
-import fr.wayis.framework.jee6.property.ConfigPropertyProducer;
-import fr.wayis.framework.mongo.DBConnection;
-import fr.wayis.framework.test.runner.annotation.ClearCollection;
-import fr.wayis.framework.test.runner.annotation.ExpectedCollection;
-import fr.wayis.framework.test.runner.annotation.InitCollection;
-import fr.wayis.framework.test.runner.application.ApplicationConfig;
-import fr.wayis.framework.test.runner.manager.MongoManager;
-import fr.wayis.framework.test.runner.resource.UserResource;
+import fr.wayis.framework.javaee.extensions.impl.config.ConfigPropertyProducer;
+import fr.wayis.framework.javaee.extensions.mongodb.DBConnection;
+import fr.wayis.framework.test.mongodb.annotation.ClearCollection;
+import fr.wayis.framework.test.mongodb.annotation.ExpectedCollection;
+import fr.wayis.framework.test.mongodb.annotation.InitCollection;
+import fr.wayis.framework.test.mongodb.runner.application.ApplicationConfig;
+import fr.wayis.framework.test.mongodb.MongoManager;
+import fr.wayis.framework.test.mongodb.runner.resource.UserResource;
 import org.apache.openejb.jee.WebApp;
 import org.apache.openejb.testing.Classes;
 import org.apache.openejb.testing.EnableServices;
@@ -24,12 +24,12 @@ import javax.ws.rs.core.Application;
 import java.util.List;
 
 /**
- * Test of the {@link MongoApplicationComposer} JUnit Runner.<br/>
+ * Test of the {@link fr.wayis.framework.test.mongodb.runner.MongoApplicationComposer} JUnit Runner.<br/>
  * This test class tests:
  * <ul>
- * <li>{@link fr.wayis.framework.test.runner.annotation.ClearCollection}: to test {@link fr.wayis.framework.test.runner.rule.ClearCollectionRule}</li>
- * <li>{@link fr.wayis.framework.test.runner.annotation.InitCollection}: to test {@link fr.wayis.framework.test.runner.rule.InitCollectionRule}</li>
- * <li>{@link fr.wayis.framework.test.runner.annotation.ExpectedCollection}: to test {@link fr.wayis.framework.test.runner.rule.CheckCollectionRule}</li>
+ * <li>{@link fr.wayis.framework.test.mongodb.annotation.ClearCollection}: to test {@link fr.wayis.framework.test.mongodb.rule.ClearCollectionRule}</li>
+ * <li>{@link fr.wayis.framework.test.mongodb.annotation.InitCollection}: to test {@link fr.wayis.framework.test.mongodb.rule.InitCollectionRule}</li>
+ * <li>{@link fr.wayis.framework.test.mongodb.annotation.ExpectedCollection}: to test {@link fr.wayis.framework.test.mongodb.rule.CheckCollectionRule}</li>
  * </ul>
  * The goal of this test is to combine all annotations together to check the correct order of their executions:
  * <ol>
@@ -39,9 +39,9 @@ import java.util.List;
  * </ol>
  * This test also verifies the combination of the CDI provided by the OpenEJB ApplicationComposer runner and custom annotations.
  *
- * @see fr.wayis.framework.test.runner.ClearCollectionTest
- * @see fr.wayis.framework.test.runner.InitCollectionTest
- * @see fr.wayis.framework.test.runner.ExpectedCollectionTest
+ * @see ClearCollectionTest
+ * @see InitCollectionTest
+ * @see ExpectedCollectionTest
  * @see org.apache.openejb.junit.ApplicationComposer
  */
 @EnableServices("jaxrs")
@@ -71,7 +71,7 @@ public class MongoApplicationComposerTest {
     }
 
     /**
-     * Tests the {@link fr.wayis.framework.test.runner.annotation.ClearCollection} annotation combined with the {@link fr.wayis.framework.test.runner.annotation.InitCollection} one.<br/>
+     * Tests the {@link fr.wayis.framework.test.mongodb.annotation.ClearCollection} annotation combined with the {@link fr.wayis.framework.test.mongodb.annotation.InitCollection} one.<br/>
      * This method tests if ClearCollection annotation is called before the InitCollection one.
      */
     @Test
@@ -83,7 +83,7 @@ public class MongoApplicationComposerTest {
     }
 
     /**
-     * Tests the {@link fr.wayis.framework.test.runner.annotation.ClearCollection} annotation combined with the {@link fr.wayis.framework.test.runner.annotation.InitCollection} one.<br/>
+     * Tests the {@link fr.wayis.framework.test.mongodb.annotation.ClearCollection} annotation combined with the {@link fr.wayis.framework.test.mongodb.annotation.InitCollection} one.<br/>
      * This method tests if ClearCollection annotation is called before the InitCollection one even if the annotation order is changed on the test method.
      */
     @Test

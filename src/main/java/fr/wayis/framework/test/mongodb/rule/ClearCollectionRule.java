@@ -1,7 +1,7 @@
-package fr.wayis.framework.test.runner.rule;
+package fr.wayis.framework.test.mongodb.rule;
 
-import fr.wayis.framework.test.runner.annotation.ClearCollection;
-import fr.wayis.framework.test.runner.manager.MongoManager;
+import fr.wayis.framework.test.mongodb.annotation.ClearCollection;
+import fr.wayis.framework.test.mongodb.MongoManager;
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;
 import org.junit.runners.model.Statement;
@@ -9,12 +9,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * JUnit test rule to manage the {@link fr.wayis.framework.test.runner.annotation.ClearCollection} annotation.<br>
+ * JUnit test rule to manage the {@link fr.wayis.framework.test.mongodb.annotation.ClearCollection} annotation.<br>
  * The unit test is evaluated after this test rule.<br>
  * This rule checks the ClearCollection annotation and calls the MongoManager to clear the given collection.
  *
- * @see fr.wayis.framework.test.runner.annotation.ClearCollection
- * @see fr.wayis.framework.test.runner.manager.MongoManager
+ * @see fr.wayis.framework.test.mongodb.annotation.ClearCollection
+ * @see fr.wayis.framework.test.mongodb.MongoManager
  * @see org.junit.rules.TestRule
  */
 public final class ClearCollectionRule implements TestRule {

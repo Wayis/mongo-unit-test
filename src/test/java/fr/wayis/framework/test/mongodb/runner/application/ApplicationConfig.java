@@ -1,7 +1,7 @@
-package fr.wayis.framework.test.runner.application;
+package fr.wayis.framework.test.mongodb.runner.application;
 
 import com.mongodb.jee.jaxrs.JaxrsMongoApplication;
-import fr.wayis.framework.test.runner.resource.UserResource;
+import fr.wayis.framework.test.mongodb.runner.resource.UserResource;
 
 import javax.ws.rs.ApplicationPath;
 import java.util.Set;

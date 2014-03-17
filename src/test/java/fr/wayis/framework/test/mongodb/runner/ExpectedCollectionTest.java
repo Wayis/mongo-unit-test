@@ -1,14 +1,14 @@
-package fr.wayis.framework.test.runner;
+package fr.wayis.framework.test.mongodb.runner;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
-import fr.wayis.framework.jee6.property.ConfigPropertyProducer;
-import fr.wayis.framework.mongo.DBConnection;
-import fr.wayis.framework.test.runner.annotation.ExpectedCollection;
-import fr.wayis.framework.test.runner.application.ApplicationConfig;
-import fr.wayis.framework.test.runner.manager.MongoManager;
-import fr.wayis.framework.test.runner.resource.UserResource;
+import fr.wayis.framework.javaee.extensions.impl.config.ConfigPropertyProducer;
+import fr.wayis.framework.javaee.extensions.mongodb.DBConnection;
+import fr.wayis.framework.test.mongodb.annotation.ExpectedCollection;
+import fr.wayis.framework.test.mongodb.runner.application.ApplicationConfig;
+import fr.wayis.framework.test.mongodb.MongoManager;
+import fr.wayis.framework.test.mongodb.runner.resource.UserResource;
 import org.apache.openejb.jee.WebApp;
 import org.apache.openejb.testing.Classes;
 import org.apache.openejb.testing.EnableServices;
@@ -22,11 +22,11 @@ import org.junit.runner.RunWith;
 import javax.ws.rs.core.Application;
 
 /**
- * Test of the {@link ExpectedCollection} annotation to use in a test method with the {@link fr.wayis.framework.test.runner.MongoApplicationComposer} runner.<br/>
- * @see fr.wayis.framework.test.runner.annotation.ExpectedCollection
- * @see fr.wayis.framework.test.runner.rule.CheckCollectionRule
- * @see fr.wayis.framework.test.runner.manager.MongoManager
- * @see fr.wayis.framework.test.runner.MongoApplicationComposer
+ * Test of the {@link ExpectedCollection} annotation to use in a test method with the {@link fr.wayis.framework.test.mongodb.runner.MongoApplicationComposer} runner.<br/>
+ * @see fr.wayis.framework.test.mongodb.annotation.ExpectedCollection
+ * @see fr.wayis.framework.test.mongodb.rule.CheckCollectionRule
+ * @see fr.wayis.framework.test.mongodb.MongoManager
+ * @see fr.wayis.framework.test.mongodb.runner.MongoApplicationComposer
  */
 @EnableServices("jaxrs")
 @RunWith(MongoApplicationComposer.class)
@@ -63,7 +63,7 @@ public class ExpectedCollectionTest {
     }
 
     /**
-     * Tests the {@link fr.wayis.framework.test.runner.annotation.ExpectedCollection} annotation.<br/>
+     * Tests the {@link fr.wayis.framework.test.mongodb.annotation.ExpectedCollection} annotation.<br/>
      * This method tests if the annotation is called after the test and if the collection corresponds to the file.
      */
     @Test
@@ -76,7 +76,7 @@ public class ExpectedCollectionTest {
     }
 
     /**
-     * Tests the {@link fr.wayis.framework.test.runner.annotation.ExpectedCollection} annotation.<br/>
+     * Tests the {@link fr.wayis.framework.test.mongodb.annotation.ExpectedCollection} annotation.<br/>
      * This method tests if the fail message is correct if the size of the expected collection is not the size as the mongodb collection.
      */
     @Test
@@ -93,7 +93,7 @@ public class ExpectedCollectionTest {
     }
 
     /**
-     * Tests the {@link fr.wayis.framework.test.runner.annotation.ExpectedCollection} annotation.<br/>
+     * Tests the {@link fr.wayis.framework.test.mongodb.annotation.ExpectedCollection} annotation.<br/>
      * This method tests if the fail message is correct if there is a bad document.
      */
     @Test
@@ -110,7 +110,7 @@ public class ExpectedCollectionTest {
     }
 
     /**
-     * Tests the {@link fr.wayis.framework.test.runner.annotation.ExpectedCollection} annotation.<br/>
+     * Tests the {@link fr.wayis.framework.test.mongodb.annotation.ExpectedCollection} annotation.<br/>
      * This method tests if the annotation is called after the test and if ignored columns are taken into account.
      */
     @Test
@@ -123,7 +123,7 @@ public class ExpectedCollectionTest {
     }
 
     /**
-     * Tests the {@link fr.wayis.framework.test.runner.annotation.ExpectedCollection} annotation.<br/>
+     * Tests the {@link fr.wayis.framework.test.mongodb.annotation.ExpectedCollection} annotation.<br/>
      * This method tests if the order of document keys is not a constraint.
      */
     @Test

@@ -1,4 +1,4 @@
-package fr.wayis.framework.test.runner.manager;
+package fr.wayis.framework.test.mongodb;
 
 import com.mongodb.*;
 import de.flapdoodle.embed.mongo.MongodExecutable;

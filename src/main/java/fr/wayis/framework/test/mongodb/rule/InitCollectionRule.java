@@ -1,10 +1,10 @@
-package fr.wayis.framework.test.runner.rule;
+package fr.wayis.framework.test.mongodb.rule;
 
 import com.mongodb.BasicDBList;
 import com.mongodb.util.JSON;
-import fr.wayis.framework.test.runner.annotation.ExpectedCollection;
-import fr.wayis.framework.test.runner.manager.MongoManager;
-import fr.wayis.framework.test.runner.util.StreamUtils;
+import fr.wayis.framework.test.mongodb.annotation.InitCollection;
+import fr.wayis.framework.test.mongodb.MongoManager;
+import fr.wayis.framework.test.util.StreamUtils;
 import org.apache.commons.io.IOUtils;
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;
@@ -14,20 +14,19 @@ import org.slf4j.LoggerFactory;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.util.Arrays;
 
 /**
- * JUnit test rule to manage the {@link fr.wayis.framework.test.runner.annotation.ExpectedCollection} annotation.<br>
- * The unit test is evaluated before this test rule.<br>
- * This rule checks the ExpectedCollection annotation and calls the MongoManager to check if the given collection corresponds to the JSON file.
+ * JUnit test rule to manage the {@link fr.wayis.framework.test.mongodb.annotation.InitCollection} annotation.<br>
+ * The unit test is evaluated after this test rule.<br>
+ * This rule checks the InitCollection annotation and calls the MongoManager to initialize the given collection with a JSON file.
  *
- * @see fr.wayis.framework.test.runner.annotation.ExpectedCollection
- * @see fr.wayis.framework.test.runner.manager.MongoManager
+ * @see fr.wayis.framework.test.mongodb.annotation.InitCollection
+ * @see fr.wayis.framework.test.mongodb.MongoManager
  * @see org.junit.rules.TestRule
  */
-public final class CheckCollectionRule implements TestRule {
+public final class InitCollectionRule implements TestRule {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(CheckCollectionRule.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(InitCollectionRule.class);
 
     /**
      * {@inheritDoc}
@@ -37,27 +36,26 @@ public final class CheckCollectionRule implements TestRule {
         return new Statement() {
             @Override
             public void evaluate() throws Throwable {
-                base.evaluate();
-
-                ExpectedCollection annotation = description.getAnnotation(ExpectedCollection.class);
+                InitCollection annotation = description.getAnnotation(InitCollection.class);
                 if (annotation != null) {
                     final String collectionName = annotation.name();
                     final String fileName = annotation.file();
-                    final String[] ignoredProperties = annotation.ignoredProperties();
-                    LOGGER.info("@ExpectedCollection found -> collection '" + collectionName + "' will be checked with the file '" + fileName + "' with ignored properties: " + Arrays.toString(ignoredProperties));
+                    LOGGER.info("@InitCollection found -> collection '" + collectionName + "' will be initialized with the file '" + fileName + "'");
                     InputStream file = null;
                     try {
                         file = description.getTestClass().getResourceAsStream(fileName);
                         if (file == null) {
                             throw new FileNotFoundException("Unable to load file '" + fileName + "' from the classpath");
                         }
+
                         String jsonFile = IOUtils.toString(file, "UTF-8");
                         BasicDBList data = (BasicDBList) JSON.parse(jsonFile);
-                        MongoManager.getInstance().checkCollection(data, collectionName, ignoredProperties);
+                        MongoManager.getInstance().initCollection(collectionName, data);
                     } finally {
                         StreamUtils.closeQuietly(file);
                     }
                 }
+                base.evaluate();
             }
         };
     }

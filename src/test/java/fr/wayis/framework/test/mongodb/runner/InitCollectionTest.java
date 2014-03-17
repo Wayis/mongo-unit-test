@@ -1,12 +1,12 @@
-package fr.wayis.framework.test.runner;
+package fr.wayis.framework.test.mongodb.runner;
 
 import com.mongodb.DBCollection;
-import fr.wayis.framework.jee6.property.ConfigPropertyProducer;
-import fr.wayis.framework.mongo.DBConnection;
-import fr.wayis.framework.test.runner.annotation.InitCollection;
-import fr.wayis.framework.test.runner.application.ApplicationConfig;
-import fr.wayis.framework.test.runner.manager.MongoManager;
-import fr.wayis.framework.test.runner.resource.UserResource;
+import fr.wayis.framework.javaee.extensions.impl.config.ConfigPropertyProducer;
+import fr.wayis.framework.javaee.extensions.mongodb.DBConnection;
+import fr.wayis.framework.test.mongodb.annotation.InitCollection;
+import fr.wayis.framework.test.mongodb.runner.application.ApplicationConfig;
+import fr.wayis.framework.test.mongodb.MongoManager;
+import fr.wayis.framework.test.mongodb.runner.resource.UserResource;
 import org.apache.openejb.jee.WebApp;
 import org.apache.openejb.testing.Classes;
 import org.apache.openejb.testing.EnableServices;
@@ -18,12 +18,12 @@ import org.junit.runner.RunWith;
 import javax.ws.rs.core.Application;
 
 /**
- * Test of the {@link fr.wayis.framework.test.runner.annotation.InitCollection} annotation to use in a test method with the {@link fr.wayis.framework.test.runner.MongoApplicationComposer} runner.<br/>
+ * Test of the {@link fr.wayis.framework.test.mongodb.annotation.InitCollection} annotation to use in a test method with the {@link fr.wayis.framework.test.mongodb.runner.MongoApplicationComposer} runner.<br/>
  *
- * @see fr.wayis.framework.test.runner.annotation.InitCollection
- * @see fr.wayis.framework.test.runner.rule.InitCollectionRule
- * @see fr.wayis.framework.test.runner.manager.MongoManager
- * @see fr.wayis.framework.test.runner.MongoApplicationComposer
+ * @see fr.wayis.framework.test.mongodb.annotation.InitCollection
+ * @see fr.wayis.framework.test.mongodb.rule.InitCollectionRule
+ * @see fr.wayis.framework.test.mongodb.MongoManager
+ * @see fr.wayis.framework.test.mongodb.runner.MongoApplicationComposer
  */
 @EnableServices("jaxrs")
 @RunWith(MongoApplicationComposer.class)
@@ -58,7 +58,7 @@ public class InitCollectionTest {
     }
 
     /**
-     * Tests the {@link fr.wayis.framework.test.runner.annotation.InitCollection} annotation.<br/>
+     * Tests the {@link fr.wayis.framework.test.mongodb.annotation.InitCollection} annotation.<br/>
      * This method tests if the annotation is called before the test and if the collection is correctly initialized.
      */
     @Test

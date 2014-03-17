@@ -5,8 +5,27 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>fr.wayis.framework.test</groupId>
-    <artifactId>mongo-unit-test</artifactId>
+    <artifactId>mongodb-unit-test</artifactId>
     <version>1.0.0</version>
+    <packaging>jar</packaging>
+
+    <name>MongoDB Unit Test</name>
+    <description>Runner and rules to help Unit Test with MongoDB.</description>
+    <url>https://github.com/wayis/mongodb-unit-test</url>
+
+    <scm>
+        <connection>scm:git:git@github.com:wayis/mongodb-unit-test.git</connection>
+        <url>git@github.com:wayis/mongodb-unit-test.git</url>
+        <developerConnection>scm:git:git@github.com:wayis/mongodb-unit-test.git</developerConnection>
+    </scm>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -56,7 +75,7 @@
         </dependency>
         <dependency>
             <groupId>fr.wayis.framework</groupId>
-            <artifactId>mongo-utils</artifactId>
+            <artifactId>javaee6-extensions-mongodb</artifactId>
             <version>1.0.0</version>
             <scope>test</scope>
         </dependency>
@@ -71,7 +90,6 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.1</version>
                 <configuration>
@@ -79,6 +97,76 @@
                     <target>1.7</target>
                 </configuration>
             </plugin>
+            <plugin>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.2.1</version>
+            </plugin>
+            <plugin>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.5</version>
+                <configuration>
+                    <use>false</use>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
+    <profiles>
+        <profile>
+            <id>mongodb-unit-test-release</id>
+            <!-- Signs all artifacts before deploying to Maven Central. -->
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.5</version>
+                        <executions>
+                            <execution>
+                                <id>gpg-sign</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>generate-docs</id>
+            <!--
+            Generates the *-source.jar and *-javadoc.jar of this artifact.
+            This profile is required to be active for release
+            builds due to the packaging requirements of the Central repo.
+            -->
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <phase>prepare-package</phase>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>attach-javadoc</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>

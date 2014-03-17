@@ -1,9 +1,9 @@
-package fr.wayis.framework.test.runner;
+package fr.wayis.framework.test.mongodb.runner;
 
-import fr.wayis.framework.test.runner.manager.MongoManager;
-import fr.wayis.framework.test.runner.rule.CheckCollectionRule;
-import fr.wayis.framework.test.runner.rule.ClearCollectionRule;
-import fr.wayis.framework.test.runner.rule.InitCollectionRule;
+import fr.wayis.framework.test.mongodb.MongoManager;
+import fr.wayis.framework.test.mongodb.rule.CheckCollectionRule;
+import fr.wayis.framework.test.mongodb.rule.ClearCollectionRule;
+import fr.wayis.framework.test.mongodb.rule.InitCollectionRule;
 import org.apache.openejb.junit.ApplicationComposer;
 import org.junit.internal.runners.model.EachTestNotifier;
 import org.junit.rules.RuleChain;
@@ -18,20 +18,20 @@ import java.util.List;
 /**
  * JUnit Runner to manage custom rules :
  * <ul>
- * <li>ClearCollectionRule: to clear a given collection. Used with the {@link fr.wayis.framework.test.runner.annotation.ClearCollection} annotation.</li>
- * <li>InitCollectionRule: to initialize a given collection with a JSON file. Used with the {@link fr.wayis.framework.test.runner.annotation.InitCollection} annotation.</li>
- * <li>CheckCollectionRule: to check a JSON file with the given collection. Used with {@link fr.wayis.framework.test.runner.annotation.ExpectedCollection} annotation.</li>
+ * <li>ClearCollectionRule: to clear a given collection. Used with the {@link fr.wayis.framework.test.mongodb.annotation.ClearCollection} annotation.</li>
+ * <li>InitCollectionRule: to initialize a given collection with a JSON file. Used with the {@link fr.wayis.framework.test.mongodb.annotation.InitCollection} annotation.</li>
+ * <li>CheckCollectionRule: to check a JSON file with the given collection. Used with {@link fr.wayis.framework.test.mongodb.annotation.ExpectedCollection} annotation.</li>
  * </ul>
  * These rules will be executed before all others test rules declared by @Rule.
  * <p/>
  * This Runner extends the openejb {@link org.apache.openejb.junit.ApplicationComposer} Runner.
  *
- * @see fr.wayis.framework.test.runner.rule.ClearCollectionRule
- * @see fr.wayis.framework.test.runner.annotation.ClearCollection
- * @see fr.wayis.framework.test.runner.rule.InitCollectionRule
- * @see fr.wayis.framework.test.runner.annotation.InitCollection
- * @see fr.wayis.framework.test.runner.rule.CheckCollectionRule
- * @see fr.wayis.framework.test.runner.annotation.ExpectedCollection
+ * @see fr.wayis.framework.test.mongodb.rule.ClearCollectionRule
+ * @see fr.wayis.framework.test.mongodb.annotation.ClearCollection
+ * @see fr.wayis.framework.test.mongodb.rule.InitCollectionRule
+ * @see fr.wayis.framework.test.mongodb.annotation.InitCollection
+ * @see fr.wayis.framework.test.mongodb.rule.CheckCollectionRule
+ * @see fr.wayis.framework.test.mongodb.annotation.ExpectedCollection
  * @see org.junit.rules.TestRule
  * @see org.junit.Rule
  * @see org.apache.openejb.junit.ApplicationComposer
@@ -81,9 +81,9 @@ public class MongoApplicationComposer extends ApplicationComposer {
      * @param target the test case instance
      * @return a list of TestRules that should be applied when executing this
      * test.
-     * @see fr.wayis.framework.test.runner.rule.ClearCollectionRule
-     * @see fr.wayis.framework.test.runner.rule.InitCollectionRule
-     * @see fr.wayis.framework.test.runner.rule.CheckCollectionRule
+     * @see fr.wayis.framework.test.mongodb.rule.ClearCollectionRule
+     * @see fr.wayis.framework.test.mongodb.rule.InitCollectionRule
+     * @see fr.wayis.framework.test.mongodb.rule.CheckCollectionRule
      * @see org.junit.rules.RuleChain
      */
     @Override

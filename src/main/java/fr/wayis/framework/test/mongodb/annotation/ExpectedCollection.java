@@ -1,4 +1,4 @@
-package fr.wayis.framework.test.runner.annotation;
+package fr.wayis.framework.test.mongodb.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

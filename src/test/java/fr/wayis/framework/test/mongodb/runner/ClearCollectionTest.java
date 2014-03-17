@@ -1,13 +1,13 @@
-package fr.wayis.framework.test.runner;
+package fr.wayis.framework.test.mongodb.runner;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
-import fr.wayis.framework.jee6.property.ConfigPropertyProducer;
-import fr.wayis.framework.mongo.DBConnection;
-import fr.wayis.framework.test.runner.annotation.ClearCollection;
-import fr.wayis.framework.test.runner.application.ApplicationConfig;
-import fr.wayis.framework.test.runner.manager.MongoManager;
-import fr.wayis.framework.test.runner.resource.UserResource;
+import fr.wayis.framework.javaee.extensions.impl.config.ConfigPropertyProducer;
+import fr.wayis.framework.javaee.extensions.mongodb.DBConnection;
+import fr.wayis.framework.test.mongodb.MongoManager;
+import fr.wayis.framework.test.mongodb.annotation.ClearCollection;
+import fr.wayis.framework.test.mongodb.runner.application.ApplicationConfig;
+import fr.wayis.framework.test.mongodb.runner.resource.UserResource;
 import org.apache.openejb.jee.WebApp;
 import org.apache.openejb.testing.Classes;
 import org.apache.openejb.testing.EnableServices;
@@ -19,12 +19,12 @@ import org.junit.runner.RunWith;
 import javax.ws.rs.core.Application;
 
 /**
- * Test of the {@link fr.wayis.framework.test.runner.annotation.ClearCollection} annotation to use in a test method with the {@link fr.wayis.framework.test.runner.MongoApplicationComposer} runner.<br/>
+ * Test of the {@link fr.wayis.framework.test.mongodb.annotation.ClearCollection} annotation to use in a test method with the {@link fr.wayis.framework.test.mongodb.runner.MongoApplicationComposer} runner.<br/>
  *
- * @see fr.wayis.framework.test.runner.annotation.ClearCollection
- * @see fr.wayis.framework.test.runner.rule.ClearCollectionRule
- * @see fr.wayis.framework.test.runner.manager.MongoManager
- * @see fr.wayis.framework.test.runner.MongoApplicationComposer
+ * @see fr.wayis.framework.test.mongodb.annotation.ClearCollection
+ * @see fr.wayis.framework.test.mongodb.rule.ClearCollectionRule
+ * @see fr.wayis.framework.test.mongodb.MongoManager
+ * @see fr.wayis.framework.test.mongodb.runner.MongoApplicationComposer
  */
 @EnableServices("jaxrs")
 @RunWith(MongoApplicationComposer.class)
@@ -62,7 +62,7 @@ public class ClearCollectionTest {
     }
 
     /**
-     * Tests the {@link fr.wayis.framework.test.runner.annotation.ClearCollection} annotation.<br/>
+     * Tests the {@link fr.wayis.framework.test.mongodb.annotation.ClearCollection} annotation.<br/>
      * This method tests if the annotation is called before the test and if the collection is correctly dropped.
      */
     @Test
