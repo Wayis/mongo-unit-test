@@ -3,7 +3,7 @@ It provides a runner extending the OpenEJB ApplicationComposer allowing the use 
 **_Maven Dependencies_**<br/>
 ```
 <dependency>
-    <groupId>fr.wayis.framework</groupId>
+    <groupId>com.github.wayis.framework.test</groupId>
     <artifactId>mongodb-unit-test</artifactId>
     <version>1.0.0</version>
     <scope>test</scope>
