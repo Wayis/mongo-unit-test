@@ -1,9 +1,8 @@
 package com.github.wayis.framework.test.mongodb.runner;
 
-import com.github.wayis.framework.test.mongodb.runner.MongoApplicationComposer;
+import com.github.wayis.framework.javaee.extensions.impl.config.ConfigPropertyProducer;
+import com.github.wayis.framework.javaee.extensions.mongodb.DBConnection;
 import com.mongodb.DBCollection;
-import fr.wayis.framework.javaee.extensions.impl.config.ConfigPropertyProducer;
-import fr.wayis.framework.javaee.extensions.mongodb.DBConnection;
 import com.github.wayis.framework.test.mongodb.annotation.InitCollection;
 import com.github.wayis.framework.test.mongodb.runner.application.ApplicationConfig;
 import com.github.wayis.framework.test.mongodb.MongoManager;

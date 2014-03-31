@@ -93,7 +93,7 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>fr.wayis.framework</groupId>
+            <groupId>com.github.wayis.framework</groupId>
             <artifactId>javaee6-extensions-mongodb</artifactId>
             <version>1.0.0</version>
             <scope>test</scope>

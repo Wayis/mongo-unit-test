@@ -1,8 +1,8 @@
 package com.github.wayis.framework.test.mongodb.runner.resource;
 
+import com.github.wayis.framework.javaee.extensions.mongodb.DBConnection;
 import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
-import fr.wayis.framework.javaee.extensions.mongodb.DBConnection;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
