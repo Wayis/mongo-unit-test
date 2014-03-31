@@ -28,9 +28,9 @@ Annotation used by the runner to clear a specific collection.<br/>
 Example:
 ```java
 @Test
-@ClearCollection(name = "collection")
+@ClearCollection(name = "users")
 public void testClearCollectionAnnotation() {
-    final DBCollection users = MongoManager.getInstance().getCollection("collection");
+    final DBCollection users = MongoManager.getInstance().getCollection("users");
     Assert.assertEquals("The @ClearCollection does not clear the collection.", 0, users.count());
 }
 ```
@@ -41,9 +41,9 @@ The file must be on JSON format.<br/>
 Example:
 ```java
 @Test
-@InitCollection(name = "collection", file = "/data/users_init.json")
+@InitCollection(name = "users", file = "/data/users_init.json")
 public void testInitCollectionAnnotation() {
-    final DBCollection users = MongoManager.getInstance().getCollection("collection");
+    final DBCollection users = MongoManager.getInstance().getCollection("users");
     Assert.assertEquals("The @InitCollection does not initialize the collection.", 5, users.count());
 }
 ```
@@ -55,9 +55,9 @@ Documents order in the JSON array is not a constraint.<br/>
 Example:
 ```java
 @Test
-@ExpectedCollection(name = "collection", file = "/data/users_check.json")
+@ExpectedCollection(name = "users", file = "/data/users_check.json")
 public void testExpectedCollectionAnnotation() {
-    final DBCollection usersCollection = MongoManager.getInstance().getCollection("collection");
+    final DBCollection usersCollection = MongoManager.getInstance().getCollection("users");
     usersCollection.insert(new BasicDBObject("lastname", "WHITE").append("firstname", "Walt"));
     usersCollection.insert(new BasicDBObject("lastname", "WHITE").append("firstname", "Skyler"));
     usersCollection.insert(new BasicDBObject("lastname", "PINKMAN").append("firstname", "Jesse"));
