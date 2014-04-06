@@ -4,7 +4,7 @@
 
     <groupId>com.github.wayis.framework.test</groupId>
     <artifactId>mongodb-unit-test</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>MongoDB Unit Test</name>
@@ -15,7 +15,7 @@
         <connection>scm:git:git@github.com:wayis/mongodb-unit-test.git</connection>
         <url>git@github.com:wayis/mongodb-unit-test.git</url>
         <developerConnection>scm:git:git@github.com:wayis/mongodb-unit-test.git</developerConnection>
-      <tag>mongodb-unit-test-1.0.0</tag>
+      <tag>HEAD</tag>
   </scm>
 
     <licenses>
